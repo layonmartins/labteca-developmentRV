@@ -6,7 +6,7 @@ public class TimedInputCanvasButtons : MonoBehaviour, TimedInputHandler {
 
 	// Use this for initialization
 	void Start () {
-        //GetComponent<Renderer>().material.color = Color.white;
+      
 	}
 	
 	// Update is called once per frame
@@ -16,6 +16,6 @@ public class TimedInputCanvasButtons : MonoBehaviour, TimedInputHandler {
 
     public void HandleTimedInput()
     {
-        Debug.Log("Click");
+        Debug.Log("Debug.Log: GazeClick");
     }
 }
