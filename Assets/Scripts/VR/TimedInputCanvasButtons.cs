@@ -23,13 +23,16 @@ public class TimedInputCanvasButtons : MonoBehaviour, TimedInputHandler {
     {
         if (button.Equals("InventoryButton"))
         {
-            hudController.CallMapTrigger();
+            Debug.Log("CallInventoryButton");
+            hudController.CallInventoryTrigger();
         } else if (button.Equals("JournalButton"))
         {
-            hudController.CallInventoryTrigger();
+            Debug.Log("CallJournalButton");
+            hudController.CallTabletTrigger();
         } else if (button.Equals("MapButton"))
         {
             hudController.CallMapTrigger();
+
         } else
         {
             //ExitCurrentstate();
