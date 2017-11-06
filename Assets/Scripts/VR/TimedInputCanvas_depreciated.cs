@@ -18,6 +18,7 @@ public class TimedInputCanvasButtons : MonoBehaviour, TimedInputHandler {
 	void Update () {
 		
 	}
+    
 
     public void HandleTimedInput()
     {

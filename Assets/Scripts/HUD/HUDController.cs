@@ -167,12 +167,12 @@ public class HUDController : MonoBehaviour {
 	public void changePlayerState(){
 		if (player.activeSelf) {
 			GameObject.Find("GameController").GetComponent<AudioController>().crossFade();
-			GameObject.Find("Elaine 1").GetComponent<Animator>().enabled = !GameObject.Find("Elaine 1").GetComponent<Animator>().enabled;
+			//GameObject.Find("Elaine 1").GetComponent<Animator>().enabled = !GameObject.Find("Elaine 1").GetComponent<Animator>().enabled;
 			GameObject.Find("Main Camera").GetComponent<Animator> ().enabled = !GameObject.Find("Main Camera").GetComponent<Animator> ().enabled;
-			player.GetComponent<MouseLook> ().enabled = !player.GetComponent<MouseLook> ().enabled;
+			// player.GetComponent<MouseLook> ().enabled = !player.GetComponent<MouseLook> ().enabled;
 			player.GetComponent<CharacterMotor> ().enabled = !player.GetComponent<CharacterMotor> ().enabled;
 			player.GetComponent<FPSInputController> ().enabled = !player.GetComponent<FPSInputController> ().enabled;
-			GameObject.Find ("Main Camera").GetComponent<MouseLook> ().enabled = !GameObject.Find ("Main Camera").GetComponent<MouseLook> ().enabled;
+			//GameObject.Find ("Main Camera").GetComponent<MouseLook> ().enabled = !GameObject.Find ("Main Camera").GetComponent<MouseLook> ().enabled;
 		}
 	}
 }

@@ -1,12 +1,16 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
+using UnityEditor.Events;
 
 public class TimedInputObject : MonoBehaviour, TimedInputHandler {
 
-	// Use this for initialization
-	void Start () {
-        GetComponent<Renderer>().material.color = Color.white;
+    public Button button;
+
+    // Use this for initialization
+    void Start () {
+        
 	}
 	
 	// Update is called once per frame
@@ -16,9 +20,6 @@ public class TimedInputObject : MonoBehaviour, TimedInputHandler {
 
     public void HandleTimedInput()
     {
-        if (GetComponent<Renderer>().material.color == Color.blue)
-            GetComponent<Renderer>().material.color = Color.white;
-        else
-            GetComponent<Renderer>().material.color = Color.blue;
+        button.onClick.Invoke();
     }
 }
