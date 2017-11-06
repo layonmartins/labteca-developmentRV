@@ -10,6 +10,8 @@ public class ExperimentMenu : TabletState
 	public Button prefab;
 	public JournalController journalController;
 
+    public int numeroDesafio;
+
 	public GameObject[] stepTabs;
 
 	public override TabletStates StateType {
@@ -18,11 +20,13 @@ public class ExperimentMenu : TabletState
 		}
 	}
 
-	// Use this for initialization
-	/*void Start ()
+	 
+	void Start ()
 	{
-		RefreshScroll ();
-	}*/
+        // RefreshScroll (0);
+       // GoToExperiment();
+
+    }
 
 	void OnGUI(){
 		Event e = Event.current;
@@ -34,39 +38,45 @@ public class ExperimentMenu : TabletState
 	}
 
 	public void RefreshScroll(int numberOfSteps){
-		//Always clean the previous items
-		int child = content.childCount;
-		for (int i = 0; i < child; i++) {
-			Destroy(content.GetChild(i).gameObject);
-		}
+		////Always clean the previous items
+		//int child = content.childCount;
+		//for (int i = 0; i < child; i++) {
+		//	Destroy(content.GetChild(i).gameObject);
+		//}
 
-		stepTabs = new GameObject[numberOfSteps];
-		//Generates new items
-		for (int i = 0; i < numberOfSteps; i++) {
-			GameObject tempItem = Instantiate (prefab.gameObject) as GameObject;
-			tempItem.name = "MenuButton"+i;
-			string name = "";
-			/*if(i == 0) {
-				name = "Solução de NaCl 1 mol/litro";
-			} else {
-				tempItem.GetComponentInChildren<Text> ().text = tempItem.GetComponentInChildren<Text> ().text + (i+1); //The name is based on the prefab's text
-			}*/
-			//name = JournalSaver.GetExperimentName(i);
-			name = "Desafio";
-			tempItem.GetComponentInChildren<Text> ().text = name;
-			tempItem.gameObject.GetComponent<Button> ().onClick.AddListener (() => GoToExperiment(int.Parse(tempItem.name.Substring(10))));
-			tempItem.transform.SetParent (content.transform, false);
+		//stepTabs = new GameObject[numberOfSteps];
+		////Generates new items
+		//for (int i = 0; i < numberOfSteps; i++) {
+		//	GameObject tempItem = Instantiate (prefab.gameObject) as GameObject;
+		//	tempItem.name = "MenuButton"+i;
+		//	string name = "";
+		//	/*if(i == 0) {
+		//		name = "Solução de NaCl 1 mol/litro";
+		//	} else {
+		//		tempItem.GetComponentInChildren<Text> ().text = tempItem.GetComponentInChildren<Text> ().text + (i+1); //The name is based on the prefab's text
+		//	}*/
+		//	//name = JournalSaver.GetExperimentName(i);
+		//	name = "Desafio";
+		//	tempItem.GetComponentInChildren<Text> ().text = name;
+  //          numeroDesafio = int.Parse(tempItem.name.Substring(10));
 
-			stepTabs[i] = tempItem;
-			//tempItem.SetActive(false);
-			}
+  //         // tempItem.gameObject.GetComponent<Button> ().onClick.AddListener (() => GoToExperiment());
+            
+  //          tempItem.transform.SetParent (content.transform, false);
+
+		//	stepTabs[i] = tempItem;
+  //          //tempItem.SetActive(false);
+  //          tempItem.gameObject.GetComponent<Button>().onClick.Invoke();
+  //      }
 	}
 	/// <summary>
 	/// Goes to "i" experiment.
 	/// </summary>
 	/// <param name="i">The index.</param>
-	public void GoToExperiment(int i){
-		journalController.changeExperiment (i);
+	public void GoToExperiment(){
+        //Gabi for it's working with VR
+        Debug.Log("GoToExperiment :)");
+        journalController.changeExperiment (0);
 		GetComponentInParent<TabletStateMachine> ().goToState ((int)TabletStates.Experiments);
 	}
 
