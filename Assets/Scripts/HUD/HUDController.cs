@@ -14,11 +14,13 @@ public class HUDController : MonoBehaviour {
 	public InGameMenu menu;
 	public InventoryControl invControl;
 	public KeyCode journalKey,inventoryKey,mapKey;
-	public bool tabletUp=false,inventoryUp=false;
+	public bool tabletUp = false, inventoryUp = false, mapUP = false;
 	public GameObject player,map; /*< GameObject of Player. */
 	public Canvas inventoryCanvas;
-	public bool inventoryLocked=false,mapLocked = false,lockKey;
+    public Canvas locomotionCanvas;
+    public bool inventoryLocked=false,mapLocked = false,lockKey;
 	public List<Text> keysText;
+    
 
 	public RectTransform hover; 
 
@@ -93,10 +95,13 @@ public class HUDController : MonoBehaviour {
 		if (tabletUp) {
 			Cursor.visible = true;
 			Screen.lockCursor = false;
-		}else if (!inventoryUp && !map.activeSelf) {
+            locomotionCanvas.enabled = false;
+        }
+        else if (!inventoryUp && !map.activeSelf) {
 			Cursor.visible = false;
 			Screen.lockCursor = true;
-		}
+            locomotionCanvas.enabled = true;
+        }
 	}
 
 	public void CallInventoryTrigger(){
@@ -123,10 +128,12 @@ public class HUDController : MonoBehaviour {
 		if (inventoryUp) {
 			Cursor.visible = true;
 			Screen.lockCursor = false;
-		} else if (!tabletUp && !map.activeSelf) {
+            locomotionCanvas.enabled = false;
+        } else if (!tabletUp && !map.activeSelf) {
 			Cursor.visible = false;
 			Screen.lockCursor = true;
-		}
+            locomotionCanvas.enabled = true;
+        }
 	}
 	public void CallMapTrigger(){
 		if(!lockKey)
@@ -137,6 +144,7 @@ public class HUDController : MonoBehaviour {
 	/// </summary>
 	/// <param name="b">If set to <c>true</c> b.</param>
 	public void CallMap(bool b){
+        mapUP = b;
 		if (!mapLocked) {
 			if (inventoryUp)
 				CallInventory (false);
@@ -154,7 +162,12 @@ public class HUDController : MonoBehaviour {
 			Cursor.visible = false;
 			Screen.lockCursor = true;
 		}
-	}
+
+        if(mapUP)
+            locomotionCanvas.enabled = false;
+        else
+            locomotionCanvas.enabled = true;
+    }
 
 	public void RefreshKeys(){
 		keysText [0].text = inventoryKey.ToString ();

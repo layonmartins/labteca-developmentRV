@@ -128,7 +128,11 @@ public class CardboardReticle : MonoBehaviour, ICardboardPointer {
     reticleDistanceInMeters = kReticleDistanceMax;
     reticleInnerAngle = kReticleMinInnerAngle;
     reticleOuterAngle = kReticleMinOuterAngle;
-  }
+
+        //When the reticle go out of the target called: HandleTimedInputExit()
+        ExecuteEvents.Execute(gazedAt, null, (TimedInputHandlerLocomotion handler, BaseEventData data)
+                  => handler.HandleTimedInputExit());
+    }
 
   /// Called when the Cardboard trigger is initiated. This is practically when
   /// the user begins pressing the trigger.
