@@ -8,6 +8,7 @@ public class HeadLookWalk : MonoBehaviour {
     public bool isWalking = false;
     private CharacterController controller;
     
+    
 
 	// Use this for initialization
 	void Start () {

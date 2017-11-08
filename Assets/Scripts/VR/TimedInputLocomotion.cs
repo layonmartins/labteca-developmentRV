@@ -22,14 +22,14 @@ public class TimedInputLocomotion : MonoBehaviour, TimedInputHandler, TimedInput
 
     public void HandleTimedInput()
     {
-        Debug.Log("Andar");
+        
         headlookwalk.isWalking = true;
-        canvasgroup.alpha = 0.4f;
+        canvasgroup.alpha = 0.5f;
     }
 
     public void HandleTimedInputExit()
     {
-        Debug.Log("ExitButton");
+        
         headlookwalk.isWalking = false;
         canvasgroup.alpha = 0.1f;
     }

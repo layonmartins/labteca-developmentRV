@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class FixPositionY : MonoBehaviour {
 
-    public GameObject cardboardmain;
+    public GameObject Object;
 
 	// Use this for initialization
 	void Start () {
@@ -16,12 +16,13 @@ public class FixPositionY : MonoBehaviour {
         //fix position Y and rotation Z
         Vector3 position = transform.position;
         Quaternion rotation = transform.rotation;
-        position.y = cardboardmain.transform.position.y - 0.15f;
+        position.y = Object.transform.position.y - 0.15f;
+        //rotation.w = 0f;
         rotation.x = 0f;
         //rotation.y = 0f;
-        rotation.z = 0f;
+        //rotation.z = 0f;
         transform.position = position;
-        transform.rotation = rotation;
+       // transform.rotation = rotation;
         
     }
 }
