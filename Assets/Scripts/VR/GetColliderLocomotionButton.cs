@@ -6,10 +6,12 @@ public class GetColliderLocomotionButton : MonoBehaviour {
 
     public GameObject player;
     private HeadLookWalk headlookwallk;
+    private CharacterController characterController;
 
 	// Use this for initialization
 	void Start () {
-        headlookwallk = player.GetComponent<HeadLookWalk>();
+       // headlookwallk = player.GetComponent<HeadLookWalk>();
+        characterController = player.GetComponent<CharacterController>();
     }
 	
 	// Update is called once per frame
@@ -19,6 +21,14 @@ public class GetColliderLocomotionButton : MonoBehaviour {
 
     void OnCollisionEnter(Collision col)
     {
-        headlookwallk.isWalking = false;
+        //headlookwallk.isWalking = false;
+        characterController.radius = 0.58f;
     }
+    void OnCollisionExit(Collision col)
+    {
+
+        characterController.radius = 0.34f;
+    }
+
+
 }

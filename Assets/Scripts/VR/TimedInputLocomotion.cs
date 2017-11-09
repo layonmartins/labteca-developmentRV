@@ -26,13 +26,13 @@ public class TimedInputLocomotion : MonoBehaviour, TimedInputHandler, TimedInput
     {
         
         headlookwalk.isWalking = true;
-        canvasgroup.alpha = 0.5f;
+        canvasgroup.alpha = 0.8f;
     }
 
     public void HandleTimedInputExit()
     {
         
         headlookwalk.isWalking = false;
-        canvasgroup.alpha = 0.2f;
+        canvasgroup.alpha = 0.4f;
     }
 }
