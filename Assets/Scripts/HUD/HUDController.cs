@@ -14,12 +14,13 @@ public class HUDController : MonoBehaviour {
 	public InGameMenu menu;
 	public InventoryControl invControl;
 	public KeyCode journalKey,inventoryKey,mapKey;
-	public bool tabletUp = false, inventoryUp = false, mapUP = false;
+	public bool tabletUp = false, inventoryUp = false, mapUp = false;
 	public GameObject player,map; /*< GameObject of Player. */
 	public Canvas inventoryCanvas;
     public Canvas locomotionCanvas;
     public bool inventoryLocked=false,mapLocked = false,lockKey;
 	public List<Text> keysText;
+    public Camera mainCamera;
     
 
 	public RectTransform hover; 
@@ -30,7 +31,11 @@ public class HUDController : MonoBehaviour {
 		Cursor.visible = false;
 		Screen.lockCursor = true;
 		RefreshKeys ();
-	}
+       
+
+
+
+    }
 
 	void Update(){
 		if (Input.GetKeyDown (KeyCode.P)) {
@@ -96,6 +101,7 @@ public class HUDController : MonoBehaviour {
 			Cursor.visible = true;
 			Screen.lockCursor = false;
             locomotionCanvas.enabled = false;
+            
         }
         else if (!inventoryUp && !map.activeSelf) {
 			Cursor.visible = false;
@@ -144,7 +150,7 @@ public class HUDController : MonoBehaviour {
 	/// </summary>
 	/// <param name="b">If set to <c>true</c> b.</param>
 	public void CallMap(bool b){
-        mapUP = b;
+        mapUp = b;
 		if (!mapLocked) {
 			if (inventoryUp)
 				CallInventory (false);
@@ -163,7 +169,7 @@ public class HUDController : MonoBehaviour {
 			Screen.lockCursor = true;
 		}
 
-        if(mapUP)
+        if(mapUp)
             locomotionCanvas.enabled = false;
         else
             locomotionCanvas.enabled = true;

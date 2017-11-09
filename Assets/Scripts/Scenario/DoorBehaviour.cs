@@ -11,16 +11,16 @@ public class DoorBehaviour : InteractObjectBase {
 	public bool automaticClose;             /*!< Bool to set automatic close. */
     public float timeToClose;               /*!< Float to set time to close. */
 	private float currentTimeToClose;
-	public DoorBehaviour closeOtherDoor; 
+	public DoorBehaviour closeOtherDoor;
 
-	public AudioSource doorClosingSound;
+    public AudioSource doorClosingSound;
 	public AudioSource doorOpeningSound;
 
 	void Start () {
 		base.Start ();
 		doorAnimator = GetComponent<Animator> ();
-	
-	}
+
+    }
 	
 	void Update () {
 		base.Update ();
@@ -46,7 +46,8 @@ public class DoorBehaviour : InteractObjectBase {
 		else {
 			this.Close();
 		}
-	}
+
+    }
 
     //! Bool to check if the door is closed.
 	public bool IsClosed(){

@@ -20,6 +20,8 @@ public class TimedInputLocomotion : MonoBehaviour, TimedInputHandler, TimedInput
 		
 	}
 
+  
+
     public void HandleTimedInput()
     {
         
@@ -31,6 +33,6 @@ public class TimedInputLocomotion : MonoBehaviour, TimedInputHandler, TimedInput
     {
         
         headlookwalk.isWalking = false;
-        canvasgroup.alpha = 0.1f;
+        canvasgroup.alpha = 0.2f;
     }
 }
