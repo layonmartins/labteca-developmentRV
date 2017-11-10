@@ -9,6 +9,7 @@ public class HeadLookWalk : MonoBehaviour {
     private CharacterController controller;
     
     
+    
 
 	// Use this for initialization
 	void Start () {
@@ -17,7 +18,12 @@ public class HeadLookWalk : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-        if(isWalking)
-        controller.SimpleMove(Camera.main.transform.forward * velocity);
-	}
+        if (isWalking)
+        {
+            controller.SimpleMove(Camera.main.transform.forward * velocity);
+            
+        }
+       
+       
+    }
 }

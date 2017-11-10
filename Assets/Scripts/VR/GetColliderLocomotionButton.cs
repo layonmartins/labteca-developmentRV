@@ -22,7 +22,7 @@ public class GetColliderLocomotionButton : MonoBehaviour {
     void OnCollisionEnter(Collision col)
     {
         //headlookwallk.isWalking = false;
-        characterController.radius = 0.58f;
+        characterController.radius = 0.6f;
     }
     void OnCollisionExit(Collision col)
     {

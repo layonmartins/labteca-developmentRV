@@ -19,7 +19,7 @@ public class FixPositionX : MonoBehaviour {
 
         Vector3 newPosition = bola.transform.position;
         Quaternion newRotation = bola.transform.rotation;
-        newPosition.y = 1.1f;
+        newPosition.y = 1.185f;
         newRotation.x = 0f;
         newRotation.z = 0f;
         transform.position = newPosition;
