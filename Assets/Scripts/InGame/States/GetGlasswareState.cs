@@ -36,8 +36,10 @@ public  class GetGlasswareState : GameStateBase, GetInterface {
 
 		prefabRect = glasswarePrefab.GetComponent<RectTransform>();		
 		contentRect = UIScrollList.content;
+        canvasUI.gameObject.SetActive(false);
 
-		for(int i=0; i < glasswareList.Length;i++)
+
+        for (int i=0; i < glasswareList.Length;i++)
 		{
 			// calculate y position
 			float y = (prefabRect.rect.height + offSetItens) * lastItemPos;
@@ -86,10 +88,13 @@ public  class GetGlasswareState : GameStateBase, GetInterface {
 	public override void OnStartRun ()
 	{
 		//GameObject.Find ("Journal").GetComponent<JournalController> ().checkJournalItem (0);
-		cameraState.gameObject.SetActive(true);
+		//layon cameraState.gameObject.SetActive(true);
 		HudText.SetText("");
 		leftDoor.Open();
-        canvasUI.GetComponent<Canvas>().enabled = true;
+        rightDoor.Open();
+        canvasUI.gameObject.SetActive(true);
+       // canvasUI.GetComponent<Canvas>().enabled = true;
+
 
 		//UIScrollList.transform.parent.GetComponent<ScrollRect>().verticalScrollbar.value = 1;
 
@@ -101,14 +106,15 @@ public  class GetGlasswareState : GameStateBase, GetInterface {
 	public override void ExitState(){
 		interactBox.GetComponent<BoxCollider>().enabled = true;
 		gameController.ChangeState(0);
-	}
+        canvasUI.gameObject.SetActive(false);
+    }
 
     //! Actions for when the State stops.
     /*! Disable the Camera inside state, the Canvas for UI and plays animation to close the left door. */
 	public override void OnStopRun ()
 	{
-		cameraState.gameObject.SetActive(false);
-		canvasUI.GetComponent<Canvas>().enabled = false;
+		//layon cameraState.gameObject.SetActive(false);
+		//canvasUI.GetComponent<Canvas>().enabled = false;
 
 		leftDoor.Close();
 

@@ -17,6 +17,7 @@ public class AccessEquipmentBehaviour : InteractObjectBase {
 	private float canvasAlpha=1f;
 	public float timeLeft;
 	private bool callInteract,fadedOut,firstTimeTrigger;
+
 	
 	void Start(){
 		if (fadeTime == 0)

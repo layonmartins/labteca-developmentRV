@@ -46,7 +46,7 @@ public class InGameState : GameStateBase {
 			HUDControl.inventoryLocked=false;
 		}
 		HUD.enabled = false;
-		player.SetActive(false);
+		//layon player.SetActive(false);
 	}
 
 	public override void ExitState(){
