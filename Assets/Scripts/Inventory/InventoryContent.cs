@@ -42,9 +42,9 @@ public class InventoryContent : MonoBehaviour {
         // if there is freedPosition, use it. If NOT, use the last item position.
         //prefabItem.GetComponent<AnyObjectInstantiation>().copyItemBase(item);
 
-        Debug.Log("Adding " + item.name 
-            + " to " + 1
-            + " at " + transform.parent.transform.parent.transform.parent.name);
+       // Debug.Log("Adding " + item.name 
+         //   + " to " + 1
+          //  + " at " + transform.parent.transform.parent.transform.parent.name);
         
         // find x and y for position
 		float y = (prefabRect.rect.height + y_Offset) * lastItemPos ;

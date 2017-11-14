@@ -5,7 +5,7 @@ using System.Collections;
 /*! Contains functions that can be used by objects that are 'buttons'.
  *  To be used, this usually is attached to Event Trigger.
  */
-public class ButtonObject : MonoBehaviour {
+public class ButtonObject : MonoBehaviour, TimedInputHandler {
     
     public Texture2D cursorTexture;         /*!< The cursor that will be used when mouse hover. */
 
@@ -18,14 +18,22 @@ public class ButtonObject : MonoBehaviour {
 	public bool changeIconeEnter = false;
 	public bool changeIconIfOnlyDefault = true;
 	private bool hovering = false;
+    private AudioSource buttonpress;
+    
+    
+    private RectTransform hover;
+    private Text texto;
 
-	private RectTransform hover;
 
-	void Start(){
-		hover = GameObject.Find ("GameController").GetComponent<HUDController>().hover;
+    void Start(){
+        
+        hover = GameObject.Find ("GameController").GetComponent<HUDController>().hover;
 		if (GetComponentInParent<WorkbenchInteractive> () != null)
 			hoverName = GetComponentInParent<WorkbenchInteractive> ().hoverName;
-	}
+        //this.gameObject.GetComponent<Image>().enabled = true;
+        //texto = this.gameObject.transform.GetChild(0).gameObject.GetComponent<Text>(); 
+       // texto.raycastTarget = false;
+    }
 
 	void Update(){
 		if (hoverName.Length == 0 && GetComponentInParent<WorkbenchInteractive> () != null) {
@@ -80,6 +88,13 @@ public class ButtonObject : MonoBehaviour {
 				CursorManager.SetToPreviousCursor ();
 			}
 		}
+    }
+
+    public void HandleTimedInput()
+    {
+        //buttonpress.Play();
+        // Invoke();
+        //this.gameObject.GetComponent<Button>().onClick.Invoke();
     }
 
 }

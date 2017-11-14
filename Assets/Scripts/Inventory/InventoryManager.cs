@@ -49,7 +49,7 @@ public class InventoryManager : MonoBehaviour {
 	private RectTransform labelRect;
 	private string hoverName;
 
-	void Start(){
+    void Start(){
 		refreshTab (null,false);
 		itemType [0] = ItemType.Liquids;
 		itemType [1] = ItemType.Solids;
@@ -127,6 +127,8 @@ public class InventoryManager : MonoBehaviour {
 			return null;
 		}
 	}
+
+    
 	/// <summary>
 	/// Changes the list to the index sent.
 	/// </summary>
@@ -273,6 +275,8 @@ public class InventoryManager : MonoBehaviour {
 			break;
 		}
 	}
+
+
 	/// <summary>
 	/// Instantiates the item on the grid.
 	/// </summary>
@@ -288,8 +292,9 @@ public class InventoryManager : MonoBehaviour {
 		ObjectList.Add(tempItem);
 		changeImage (tempItem);
 		tempItem.gameObject.GetComponent<Button> ().onClick.AddListener (() => this.setSelectedItem(tempItem.GetComponent<ItemInventoryBase>())); //adds click listener on runtime
+        
 
-		if (item.getItemType() != ItemType.Glassware) {
+        if (item.getItemType() != ItemType.Glassware) {
 			if(item.getItemType()==ItemType.Others){
 				//TODO: Implement the triggers for products
 				EventTrigger trigger = tempItem.gameObject.GetComponent<EventTrigger> ();
@@ -614,7 +619,8 @@ public class InventoryManager : MonoBehaviour {
 
 			if(remove)
 			removeItem (GameObject.Find (selectedItem.gameObject.name));
-		}
+
+}
 	}
 	/// <summary>
 	/// Sends the object to workbench.

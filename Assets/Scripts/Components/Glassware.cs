@@ -8,7 +8,7 @@ using System.Collections.Generic;
 * add and remove liquids and solids.
 */
 
-public class Glassware : ItemToInventory 
+public class Glassware : ItemToInventory, TimedInputHandler
 {
 	public float maxVolume;			//Maximum volume capacity of the glassware [ml or cm]
 	public float currentVolume;		//Current volume used
@@ -17,12 +17,14 @@ public class Glassware : ItemToInventory
 	
 	public bool precisionGlass;		//The glassware is a precision one
 	public string gl;
-	
-	//! The compounds inside
-	//Water is a valid reagent, but it is only seem when it's the only thing inside, otherwise it's associated with the reagent's concentration.
-	//public Compound[] compounds = new Compound[2];
-	//[SerializeField]
-	public object content;	//public Mixture mixture = null;
+
+    private AudioSource buttonpress;
+
+    //! The compounds inside
+    //Water is a valid reagent, but it is only seem when it's the only thing inside, otherwise it's associated with the reagent's concentration.
+    //public Compound[] compounds = new Compound[2];
+    //[SerializeField]
+    public object content;	//public Mixture mixture = null;
 
 	//Mesh of glassware, liquids and solids
 	public GameObject glasswareMesh;
@@ -103,10 +105,17 @@ public class Glassware : ItemToInventory
 	//! Sets a mass to rigidbody
 	void Start ()
 	{
-	}
-	
-	// Update is called once per frame
-	void Update () 
+        this.gameObject.layer = 16;
+        buttonpress = GameObject.Find("AudioButtonPress").GetComponent<AudioSource>();
+        
+        this.gameObject.transform.GetChild(1).GetChild(0).GetChild(0).gameObject.GetComponent<Text>().raycastTarget = false;
+       
+    }
+
+  
+
+    // Update is called once per frame
+    void Update () 
 	{
 		//Debug.Log (CursorManager.GetCurrentState ());
 		/*if (volume == 0.0f)
@@ -622,4 +631,10 @@ public class Glassware : ItemToInventory
 
 		RefreshContents();
 	}
+
+    public void HandleTimedInput()
+    {
+        buttonpress.Play();
+        OnClick();
+    }
 }

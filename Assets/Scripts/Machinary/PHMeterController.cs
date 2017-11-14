@@ -2,6 +2,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using UnityEngine.UI;
 
 //! Phmeter Controller
 /*! This is the controller for the PHmeter, it has all the methods that allows the Phmeter to work with 
@@ -29,6 +30,7 @@ public class PHMeterController : EquipmentControllerBase {
 		equipmentOn = false;
 		measure = false;
 		timeElapsed = 0;
+        
 	}
 
 	void Update () {

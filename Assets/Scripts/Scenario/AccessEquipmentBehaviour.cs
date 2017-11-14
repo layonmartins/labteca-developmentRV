@@ -17,6 +17,8 @@ public class AccessEquipmentBehaviour : InteractObjectBase {
 	private float canvasAlpha=1f;
 	public float timeLeft;
 	private bool callInteract,fadedOut,firstTimeTrigger;
+    public GameObject player;
+    public Vector3 newPosition;
 
 	
 	void Start(){
@@ -75,6 +77,8 @@ public class AccessEquipmentBehaviour : InteractObjectBase {
 		callInteract = true;
 		HudText.SetText("");
 		GetComponent<BoxCollider>().enabled = false;
+        //arrumar a posição do player
+        player.transform.position = newPosition;
 	}
 
 	/*public void fadeIn(){

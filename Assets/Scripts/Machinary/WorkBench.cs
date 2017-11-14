@@ -32,7 +32,7 @@ public class WorkBench : GameStateBase{
 	public void Start () {
 		writingLabel = false;
 		cameraState.enabled = false;
-		cameraState.GetComponent<AudioListener> ().enabled = false;
+	    cameraState.GetComponent<AudioListener> ().enabled = false;
 	}
 	
 	protected override void UpdateState (){}
@@ -163,9 +163,9 @@ public class WorkBench : GameStateBase{
      * close all dialogs that might be enabled. */
 	public override void OnStartRun ()
 	{
-		cameraState.enabled = true;
-		cameraState.GetComponent<AudioListener> ().enabled = true;
-		cameraState.depth = 2;
+		//cameraState.enabled = true;
+		//cameraState.GetComponent<AudioListener> ().enabled = true;
+		//cameraState.depth = 2;
 		HudText.SetText("");
 		returnPosition ();
 	}
@@ -175,9 +175,9 @@ public class WorkBench : GameStateBase{
 	public override void OnStopRun ()
 	{
 		gameController.closeAlert ();
-		cameraState.depth = -1;
-		cameraState.enabled = false;
-		cameraState.GetComponent<AudioListener> ().enabled = false;
+		//cameraState.depth = -1;
+		//cameraState.enabled = false;
+		//cameraState.GetComponent<AudioListener> ().enabled = false;
 
 
 		if (spatula != null) 

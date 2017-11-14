@@ -3,7 +3,7 @@
 	"objects": [
 	{
 		"index" : "0",
-		"name" : "Utilize os equipamentos e seus conhecimentos de química analítica para descobrir a classe do composto em solução no Béquer em seu INVENTÁRIO.",
+		"name" : "Procure no laboratório onde está o phMeter e faça a medição do produto (NaCl) que esta no seu iventário.",
 		"isDone" : "False",
 		"numberOfPrerequisites" : "0"
 	},

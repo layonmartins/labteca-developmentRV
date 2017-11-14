@@ -9,12 +9,14 @@ public class TimedInputObjectInteration : MonoBehaviour, TimedInputHandler {
     private HUDController hudcontroller;
     private GameObject player;
     public bool interable = true;
+    private AudioSource buttonpress;
 
     // Use this for initialization
     void Start () {
         objectInteration = GetComponent<InteractObjectBase>();
         hudcontroller = GameObject.Find("GameController").GetComponent<HUDController>();
         player = GameObject.Find("Player");
+        buttonpress = GameObject.Find("AudioButtonPress").GetComponent<AudioSource>();
     }
 	
     void isInterable()
@@ -39,6 +41,7 @@ public class TimedInputObjectInteration : MonoBehaviour, TimedInputHandler {
 
     public void HandleTimedInput()
     {
+        buttonpress.Play();
         objectInteration.Interact();
     }
 }

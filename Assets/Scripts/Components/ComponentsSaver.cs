@@ -79,75 +79,84 @@ public class ComponentsSaver : MonoBehaviour  {
 	/* -------------PRODUCT------------- */
 
 	//! Reads/Loads the dictionary from file.
-	public static Dictionary<string, Compound> LoadBackgroundCompounds()
-	{
-		JSONEditor jsonEditor = new JSONEditor("products");
-		
-		Dictionary<string, Compound> products = new Dictionary<string, Compound>();
+    public static Dictionary<string, Compound> LoadBackgroundCompounds()
+    {
+        JSONEditor jsonEditor = new JSONEditor("products");
 
-		for (int i = 0; i < jsonEditor.NumberOfObjects(); i++) 
-		{
-			
-			Compound productAcc = new Compound();
-			
-			productAcc.Name = jsonEditor.GetString (i, "name");
-			productAcc.Formula = jsonEditor.GetString (i, "formula");
-			productAcc.IsSolid = jsonEditor.GetBool(i, "isSolid" + i.ToString());
-			productAcc.MolarMass = jsonEditor.GetFloat (i, "molarMass");
-			productAcc.Purity = jsonEditor.GetFloat (i, "purity");
-			productAcc.Density = jsonEditor.GetFloat (i, "density");
-			productAcc.Polarizability = jsonEditor.GetFloat (i, "polarizability");
-			
-			if (!string.IsNullOrEmpty (jsonEditor.GetString (i, "irSpecter"))) 
-			{
-				productAcc.irSpecter = Resources.Load<Texture2D> ("specter/" + jsonEditor.GetString (i, "irSpecter"));
-			} 
-			else 
-			{
-				productAcc.irSpecter = null;
-			}
-			
-			productAcc.Conductibility = jsonEditor.GetFloat (i, "conductibility");
-			productAcc.Solubility = jsonEditor.GetFloat (i, "solubility");
-			productAcc.FumeHoodOnly = jsonEditor.GetBool(i, "fumeHoodOnly");
-			
-			productAcc.compoundColor = new Color32((byte)jsonEditor.GetInt(i, "compoundColorR"),
-			                                       (byte)jsonEditor.GetInt(i, "compoundColorG"),
-			                                       (byte)jsonEditor.GetInt(i, "compoundColorB"),
-			                                       (byte)255);
-			
-			//!Gets the liquid-related variables
-			if(!jsonEditor.GetBool(i, "isSolid")) {
-				
-				productAcc.PH = jsonEditor.GetFloat (i, "ph");
-				productAcc.Turbidity = jsonEditor.GetFloat (i, "turbidity");
-				productAcc.Refratometer = jsonEditor.GetFloat (i, "refratometer");
-				productAcc.FlameSpecter = jsonEditor.GetFloat (i, "flameSpecter");
-				if (!string.IsNullOrEmpty (jsonEditor.GetString (i, "uvSpecter"))) {
-					productAcc.uvSpecter = Resources.Load<Texture2D> ("specter/" + jsonEditor.GetString (i, "uvSpecter"));
-				} else {
-					productAcc.uvSpecter = null;
-				}
-					
-				if (!string.IsNullOrEmpty (jsonEditor.GetString (i, "hplc"))) {
-					productAcc.hplc = Resources.Load<Texture2D> ("specter/" + jsonEditor.GetString (i, "hplc"));
-				} else {
-					productAcc.hplc = null;
-				}
-			}
-				
-			productAcc.Molarity = ((productAcc.Purity * productAcc.Density) / productAcc.MolarMass); // number of mols / volume
-			Debug.Log (productAcc.Formula + ".Molarity = " + productAcc.Molarity);
-			products.Add(productAcc.Formula, productAcc);
-		}
+        Dictionary<string, Compound> products = new Dictionary<string, Compound>();
 
-		Dictionary<string, Compound> cupboard = ComponentsSaver.LoadCupboardCompounds();
+        for (int i = 0; i < jsonEditor.NumberOfObjects(); i++)
+        {
 
-		foreach (string name in cupboard.Keys) {
-			products.Add(cupboard[name].Formula, cupboard[name]);
-		}
+            Compound productAcc = new Compound();
 
-		return products;
-	}
+            productAcc.Name = jsonEditor.GetString(i, "name");
+
+           productAcc.Formula = jsonEditor.GetString(i, "formula");
+            productAcc.IsSolid = jsonEditor.GetBool(i, "isSolid" + i.ToString());
+            productAcc.MolarMass = jsonEditor.GetFloat(i, "molarMass");
+            productAcc.Purity = jsonEditor.GetFloat(i, "purity");
+            productAcc.Density = jsonEditor.GetFloat(i, "density");
+            productAcc.Polarizability = jsonEditor.GetFloat(i, "polarizability");
+
+            if (!string.IsNullOrEmpty(jsonEditor.GetString(i, "irSpecter")))
+            {
+                productAcc.irSpecter = Resources.Load<Texture2D>("specter/" + jsonEditor.GetString(i, "irSpecter"));
+            }
+           else
+           {
+                productAcc.irSpecter = null;
+            }
+
+            productAcc.Conductibility = jsonEditor.GetFloat(i, "conductibility");
+            productAcc.Solubility = jsonEditor.GetFloat(i, "solubility");
+            productAcc.FumeHoodOnly = jsonEditor.GetBool(i, "fumeHoodOnly");
+
+            productAcc.compoundColor = new Color32((byte)jsonEditor.GetInt(i, "compoundColorR"),
+                                                   (byte)jsonEditor.GetInt(i, "compoundColorG"),
+                                                   (byte)jsonEditor.GetInt(i, "compoundColorB"),
+                                                   (byte)255);
+
+            //!Gets the liquid-related variables
+            if (!jsonEditor.GetBool(i, "isSolid"))
+            {
+
+                productAcc.PH = jsonEditor.GetFloat(i, "ph");
+                productAcc.Turbidity = jsonEditor.GetFloat(i, "turbidity");
+                productAcc.Refratometer = jsonEditor.GetFloat(i, "refratometer");
+                productAcc.FlameSpecter = jsonEditor.GetFloat(i, "flameSpecter");
+               if (!string.IsNullOrEmpty(jsonEditor.GetString(i, "uvSpecter")))
+                {
+                    productAcc.uvSpecter = Resources.Load<Texture2D>("specter/" + jsonEditor.GetString(i, "uvSpecter"));
+               }
+                else
+                {
+                    productAcc.uvSpecter = null;
+                }
+
+                if (!string.IsNullOrEmpty(jsonEditor.GetString(i, "hplc")))
+                {
+                    productAcc.hplc = Resources.Load<Texture2D>("specter/" + jsonEditor.GetString(i, "hplc"));
+                }
+                else
+                {
+                    productAcc.hplc = null;
+               }
+           }
+
+            productAcc.Molarity = ((productAcc.Purity * productAcc.Density) / productAcc.MolarMass); // number of mols / volume
+            Debug.Log(productAcc.Formula + ".Molarity = " + productAcc.Molarity);
+            products.Add(productAcc.Formula, productAcc);
+        }
+
+        Dictionary<string, Compound> cupboard = ComponentsSaver.LoadCupboardCompounds();
+
+        foreach (string name in cupboard.Keys)
+        {
+            products.Add(cupboard[name].Formula, cupboard[name]);
+        }
+
+        return products;
+    }
 
 }

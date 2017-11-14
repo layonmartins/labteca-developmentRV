@@ -40,7 +40,7 @@ public class Map : MonoBehaviour {
 				distanceToCenterY = -(gameState.WorldLocation.z-YCenter)/(Mathf.Abs(pos1.position.z - pos0.position.z)/2);
 				distanceToCenterX = -(gameState.WorldLocation.x-XCenter)/(Mathf.Abs(pos1.position.x - pos0.position.x)/2);
 				marker.transform.localPosition = new Vector3 (map.sizeDelta.x * distanceToCenterX/2, map.sizeDelta.y * distanceToCenterY/2,0);
-				marker.GetComponent<Image>().sprite = gameState.interactBox.GetComponentInChildren<Image>().sprite;
+				//marker.GetComponent<Image>().sprite = gameState.interactBox.GetComponentInChildren<Image>().sprite;
 			
 				float yRotation = distanceToCenterX >0?180f:0f;
 				float xRotation = distanceToCenterY >0?180f:0f;
