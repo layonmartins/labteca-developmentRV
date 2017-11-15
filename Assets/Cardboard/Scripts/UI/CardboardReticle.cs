@@ -56,6 +56,8 @@ public class CardboardReticle : MonoBehaviour, ICardboardPointer {
 
     private float gazeStartTime;
     private GameObject gazedAt;
+    public GameObject imageProgress;
+    private timerTwo timertwo;
 
   void Start () {
     CreateReticleVertices();
@@ -63,6 +65,8 @@ public class CardboardReticle : MonoBehaviour, ICardboardPointer {
     materialComp = gameObject.GetComponent<Renderer>().material;
         gazeStartTime = -1f;
         gazedAt = null;
+        timertwo = imageProgress.GetComponent<timerTwo>();
+    
   }
 
   void OnEnable() {
@@ -115,7 +119,9 @@ public class CardboardReticle : MonoBehaviour, ICardboardPointer {
             gazeStartTime = -1f;
             ExecuteEvents.Execute(gazedAt, null, (TimedInputHandler handler, BaseEventData data) => handler.HandleTimedInput());
         }
-  }
+        //for the progress cicle in reticle
+        timertwo.HandleTimedInputIn();
+    }
 
   /// Called when the user's look no longer intersects an object previously
   /// intersected with a ray projected from the camera.
@@ -132,6 +138,7 @@ public class CardboardReticle : MonoBehaviour, ICardboardPointer {
         //When the reticle go out of the target called: HandleTimedInputExit()
         ExecuteEvents.Execute(gazedAt, null, (TimedInputHandlerLocomotion handler, BaseEventData data)
                   => handler.HandleTimedInputExit());
+        timertwo.HandleTimedInputOut();
     }
 
   /// Called when the Cardboard trigger is initiated. This is practically when
