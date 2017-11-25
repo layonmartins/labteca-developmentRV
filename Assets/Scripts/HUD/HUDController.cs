@@ -24,11 +24,21 @@ public class HUDController : MonoBehaviour {
     public GameObject StatusButtonMap;
     public GameObject StatusButtonTablet;
     public GameObject StatusButtonInventory;
-    public GameObject StatusButtonLocomotion;
 
-    public RectTransform hover; 
+    public RectTransform hover;
 
-	void Start(){
+
+    //para inverter o estado do alpha do group canvas
+    void changeAlphaGroupCanvas(GameObject button, bool b)
+    {
+        if (b)
+            button.GetComponent<CanvasGroup>().alpha = 1f;
+        else
+            button.GetComponent<CanvasGroup>().alpha = 0.2f;
+    }
+
+
+    void Start(){
 		map.SetActive (false);
 		lockKey = false;
 		Cursor.visible = false;
@@ -59,6 +69,20 @@ public class HUDController : MonoBehaviour {
 			CallMapTrigger();
 		}
 
+        if (mapUp)
+            changeAlphaGroupCanvas(StatusButtonMap, true);
+        else
+            changeAlphaGroupCanvas(StatusButtonMap, false);
+
+        if (tabletUp)
+            changeAlphaGroupCanvas(StatusButtonTablet, true);
+        else
+            changeAlphaGroupCanvas(StatusButtonTablet, false);
+
+        if (inventoryUp)
+            changeAlphaGroupCanvas(StatusButtonInventory, true);
+        else
+            changeAlphaGroupCanvas(StatusButtonInventory, false);
 
     }
 
@@ -96,10 +120,13 @@ public class HUDController : MonoBehaviour {
 		if (!player.GetComponent<MouseLook> ().enabled && !inventoryUp && !tabletUp)
 			changePlayerState ();
 
-		if (map.activeSelf)
-			map.SetActive (false);
+        if (map.activeSelf)
+        {
+            map.SetActive(false);
+            mapUp = false;
+        }
 
-		if (tabletUp) {
+        if (tabletUp) {
 			Cursor.visible = true;
 			Screen.lockCursor = false;
             locomotionCanvas.enabled = false;
@@ -131,10 +158,13 @@ public class HUDController : MonoBehaviour {
 				changePlayerState ();
 		}
 
-		if (map.activeSelf)
-			map.SetActive (false);
+        if (map.activeSelf)
+        {
+            map.SetActive(false);
+            mapUp = false;
+        }
 
-		if (inventoryUp) {
+        if (inventoryUp) {
 			Cursor.visible = true;
 			Screen.lockCursor = false;
             locomotionCanvas.enabled = false;
