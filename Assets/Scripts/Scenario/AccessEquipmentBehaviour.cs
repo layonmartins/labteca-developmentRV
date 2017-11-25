@@ -22,6 +22,7 @@ public class AccessEquipmentBehaviour : InteractObjectBase {
     public float newRotationY;
     public GameObject ActionButton;
     public GameObject phMeterButton;
+    public Canvas canvasLigarMedir;
 
     void Start(){
 		if (fadeTime == 0)
@@ -89,6 +90,7 @@ public class AccessEquipmentBehaviour : InteractObjectBase {
         //Ativar o Timed Input do botão Action
         ActionButton.GetComponent<TimedInputObject>().enabled = true;
         phMeterButton.GetComponent<CanvasGroup>().alpha = 1f;
+        canvasLigarMedir.GetComponent<CanvasGroup>().alpha = 0.5f;
     }
 
 	/*public void fadeIn(){
