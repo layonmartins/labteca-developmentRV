@@ -21,6 +21,7 @@ public class AccessEquipmentBehaviour : InteractObjectBase {
     public Vector3 newPosition;
     public float newRotationY;
     public GameObject ActionButton;
+    public GameObject phMeterButton;
 
     void Start(){
 		if (fadeTime == 0)
@@ -87,6 +88,7 @@ public class AccessEquipmentBehaviour : InteractObjectBase {
 
         //Ativar o Timed Input do botão Action
         ActionButton.GetComponent<TimedInputObject>().enabled = true;
+        phMeterButton.GetComponent<CanvasGroup>().alpha = 1f;
     }
 
 	/*public void fadeIn(){
