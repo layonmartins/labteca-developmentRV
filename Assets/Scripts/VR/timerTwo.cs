@@ -49,12 +49,12 @@ public class timerTwo : MonoBehaviour
     public void HandleTimedInputIn()
     {
         start = true;
-        Debug.Log("start=" + start);
+        
     }
 
     public void HandleTimedInputOut()
     {
         restart = true;
-        Debug.Log("restart=" + restart);
+        
     }   
 }

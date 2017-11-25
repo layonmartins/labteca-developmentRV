@@ -19,6 +19,7 @@ public class AccessEquipmentBehaviour : InteractObjectBase {
 	private bool callInteract,fadedOut,firstTimeTrigger;
     public GameObject player;
     public Vector3 newPosition;
+    public float newRotationY;
 
 	
 	void Start(){
@@ -42,6 +43,7 @@ public class AccessEquipmentBehaviour : InteractObjectBase {
 
 			}
 		}
+        //Debug.Log("Player Rotation Y: " + player.transform.rotation.y);
 	
 	}
 
@@ -79,6 +81,9 @@ public class AccessEquipmentBehaviour : InteractObjectBase {
 		GetComponent<BoxCollider>().enabled = false;
         //arrumar a posição do player
         player.transform.position = newPosition;
+        //Quaternion newRotation = player.transform.rotation;
+        //newRotation.y = newRotationY;
+        //player.transform.rotation = newRotation;
 	}
 
 	/*public void fadeIn(){

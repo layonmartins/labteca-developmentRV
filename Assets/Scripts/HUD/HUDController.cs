@@ -21,9 +21,12 @@ public class HUDController : MonoBehaviour {
     public bool inventoryLocked=false,mapLocked = false,lockKey;
 	public List<Text> keysText;
     public Camera mainCamera;
-    
+    public GameObject StatusButtonMap;
+    public GameObject StatusButtonTablet;
+    public GameObject StatusButtonInventory;
+    public GameObject StatusButtonLocomotion;
 
-	public RectTransform hover; 
+    public RectTransform hover; 
 
 	void Start(){
 		map.SetActive (false);
@@ -31,9 +34,6 @@ public class HUDController : MonoBehaviour {
 		Cursor.visible = false;
 		Screen.lockCursor = true;
 		RefreshKeys ();
-       
-
-
 
     }
 
@@ -58,7 +58,9 @@ public class HUDController : MonoBehaviour {
 		if((Input.GetKeyDown(mapKey))&&!lockKey){
 			CallMapTrigger();
 		}
-	}
+
+
+    }
 
 	public void LockKeys(bool b){
 		lockKey = b;
@@ -107,6 +109,7 @@ public class HUDController : MonoBehaviour {
 			Cursor.visible = false;
 			Screen.lockCursor = true;
             locomotionCanvas.enabled = true;
+            
         }
 	}
 
@@ -135,10 +138,12 @@ public class HUDController : MonoBehaviour {
 			Cursor.visible = true;
 			Screen.lockCursor = false;
             locomotionCanvas.enabled = false;
+            
         } else if (!tabletUp && !map.activeSelf) {
 			Cursor.visible = false;
 			Screen.lockCursor = true;
             locomotionCanvas.enabled = true;
+            
         }
 	}
 	public void CallMapTrigger(){
@@ -169,10 +174,17 @@ public class HUDController : MonoBehaviour {
 			Screen.lockCursor = true;
 		}
 
-        if(mapUp)
+        if (mapUp)
+        {
             locomotionCanvas.enabled = false;
+           
+        }
         else
+        {
             locomotionCanvas.enabled = true;
+           
+        }
+            
     }
 
 	public void RefreshKeys(){
