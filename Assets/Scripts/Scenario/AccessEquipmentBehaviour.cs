@@ -20,9 +20,9 @@ public class AccessEquipmentBehaviour : InteractObjectBase {
     public GameObject player;
     public Vector3 newPosition;
     public float newRotationY;
+    public GameObject ActionButton;
 
-	
-	void Start(){
+    void Start(){
 		if (fadeTime == 0)
 			fadeTime = .5f;
 		if (descriptionCanvas != null) {
@@ -84,7 +84,10 @@ public class AccessEquipmentBehaviour : InteractObjectBase {
         //Quaternion newRotation = player.transform.rotation;
         //newRotation.y = newRotationY;
         //player.transform.rotation = newRotation;
-	}
+
+        //Ativar o Timed Input do botão Action
+        ActionButton.GetComponent<TimedInputObject>().enabled = true;
+    }
 
 	/*public void fadeIn(){
 		descriptionCanvas.enabled = true;
