@@ -89,7 +89,7 @@ public class AccessEquipmentBehaviour : InteractObjectBase {
 
         //Ativar o Timed Input do botão Action
         ActionButton.GetComponent<TimedInputObject>().enabled = true;
-        phMeterButton.GetComponent<CanvasGroup>().alpha = 1f;
+        phMeterButton.GetComponent<CanvasGroup>().alpha = 0.8f;
         canvasLigarMedir.GetComponent<CanvasGroup>().alpha = 0.5f;
     }
 
