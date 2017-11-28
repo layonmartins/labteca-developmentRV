@@ -23,6 +23,9 @@ public class AccessEquipmentBehaviour : InteractObjectBase {
     public GameObject ActionButton;
     public GameObject phMeterButton;
     public Canvas canvasLigarMedir;
+    public Button map;
+    public Button exit;
+    public Canvas dicaLocomotionCanvas;
 
     void Start(){
 		if (fadeTime == 0)
@@ -91,6 +94,10 @@ public class AccessEquipmentBehaviour : InteractObjectBase {
         ActionButton.GetComponent<TimedInputObject>().enabled = true;
         phMeterButton.GetComponent<CanvasGroup>().alpha = 0.8f;
         canvasLigarMedir.GetComponent<CanvasGroup>().alpha = 0.5f;
+        map.GetComponent<TimedInputObject>().enabled = false;
+        exit.GetComponent<TimedInputObject>().enabled = false;
+        exit.GetComponent<CanvasGroup>().alpha = 0f;
+        dicaLocomotionCanvas.GetComponent<CanvasGroup>().alpha = 0f;
     }
 
 	/*public void fadeIn(){

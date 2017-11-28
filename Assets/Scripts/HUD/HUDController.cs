@@ -18,6 +18,7 @@ public class HUDController : MonoBehaviour {
 	public GameObject player,map; /*< GameObject of Player. */
 	public Canvas inventoryCanvas;
     public Canvas locomotionCanvas;
+    public Canvas dicaLocomotionCanvas;
     public bool inventoryLocked=false,mapLocked = false,lockKey;
 	public List<Text> keysText;
     public Camera mainCamera;
@@ -44,7 +45,7 @@ public class HUDController : MonoBehaviour {
 		Cursor.visible = false;
 		Screen.lockCursor = true;
 		RefreshKeys ();
-
+        dicaLocomotionCanvas.enabled = false;
     }
 
 	void Update(){
@@ -130,13 +131,15 @@ public class HUDController : MonoBehaviour {
 			Cursor.visible = true;
 			Screen.lockCursor = false;
             locomotionCanvas.enabled = false;
-            
+            dicaLocomotionCanvas.enabled = true;
+
         }
         else if (!inventoryUp && !map.activeSelf) {
 			Cursor.visible = false;
 			Screen.lockCursor = true;
             locomotionCanvas.enabled = true;
-            
+            dicaLocomotionCanvas.enabled = false;
+
         }
 	}
 
@@ -168,12 +171,14 @@ public class HUDController : MonoBehaviour {
 			Cursor.visible = true;
 			Screen.lockCursor = false;
             locomotionCanvas.enabled = false;
-            
+            dicaLocomotionCanvas.enabled = true;
+
         } else if (!tabletUp && !map.activeSelf) {
 			Cursor.visible = false;
 			Screen.lockCursor = true;
             locomotionCanvas.enabled = true;
-            
+            dicaLocomotionCanvas.enabled = false;
+
         }
 	}
 	public void CallMapTrigger(){
@@ -207,12 +212,13 @@ public class HUDController : MonoBehaviour {
         if (mapUp)
         {
             locomotionCanvas.enabled = false;
-           
+            dicaLocomotionCanvas.enabled = true;
+
         }
         else
         {
             locomotionCanvas.enabled = true;
-           
+            dicaLocomotionCanvas.enabled = false;
         }
             
     }
