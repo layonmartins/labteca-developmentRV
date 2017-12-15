@@ -98,6 +98,7 @@ public class AccessEquipmentBehaviour : InteractObjectBase {
         exit.GetComponent<TimedInputObject>().enabled = false;
         exit.GetComponent<CanvasGroup>().alpha = 0f;
         dicaLocomotionCanvas.GetComponent<CanvasGroup>().alpha = 0f;
+        dicaLocomotionCanvas.enabled = false;
     }
 
 	/*public void fadeIn(){
