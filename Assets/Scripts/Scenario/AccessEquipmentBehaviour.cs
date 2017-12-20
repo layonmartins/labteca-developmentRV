@@ -26,6 +26,9 @@ public class AccessEquipmentBehaviour : InteractObjectBase {
     public Button map;
     public Button exit;
     public Canvas dicaLocomotionCanvas;
+    //private MostrarDica mostrarDica;
+
+
 
     void Start(){
 		if (fadeTime == 0)
@@ -34,7 +37,9 @@ public class AccessEquipmentBehaviour : InteractObjectBase {
 			setCanvasAlphaForce(0f);
 		}
 		fadedOut = true;
-	}
+      //  mostrarDica = GetComponent<MostrarDica>();
+
+    }
 
 	void Update () {
 		if(callInteract){
@@ -49,8 +54,10 @@ public class AccessEquipmentBehaviour : InteractObjectBase {
 			}
 		}
         //Debug.Log("Player Rotation Y: " + player.transform.rotation.y);
-	
-	}
+
+       
+
+    }
 
 	void FixedUpdate(){
 		if (firstTimeTrigger) {
@@ -77,7 +84,7 @@ public class AccessEquipmentBehaviour : InteractObjectBase {
 		}
 	}
 
-    //! Does the interaction.
+     //! Does the interaction.
     /*! Fades the camera and starts the equipment state. */
 	public override void Interact ()
 	{
@@ -99,6 +106,7 @@ public class AccessEquipmentBehaviour : InteractObjectBase {
         exit.GetComponent<CanvasGroup>().alpha = 0f;
         dicaLocomotionCanvas.GetComponent<CanvasGroup>().alpha = 0f;
         dicaLocomotionCanvas.enabled = false;
+        //mostrarDica.ChamarMostrarDica();
     }
 
 	/*public void fadeIn(){
