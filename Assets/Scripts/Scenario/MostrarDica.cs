@@ -2,22 +2,36 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class MostrarDica : MonoBehaviour {
+public class MostrarDica : MonoBehaviour
+{
 
-    public Canvas dicaFinal;
+    private GameObject player;
+    private bool mostrar;
+    private GameObject plaquinhaDica;
 
-    public void ChamarMostrarDica()
+    // Use this for initialization
+    void Start()
     {
-        StartCoroutine(mostrarDica());
+        player = GameObject.Find("Player");
+        plaquinhaDica = GameObject.Find("PlaquinhaDica");
+        mostrar = true;
+        plaquinhaDica.SetActive(false);
     }
 
-    IEnumerator mostrarDica()
+    // Update is called once per frame
+    void Update()
     {
-        Debug.Log("chamou Mostrar dica");
-        yield return new WaitForSeconds(2);
-        Debug.Log("travou");
-        dicaFinal.GetComponent<CanvasGroup>().alpha = 1f;
+        if (Vector3.Distance(player.transform.position, transform.position) < 1.5f && mostrar)
+        {
+            StartCoroutine(MostraDica());
+        }
     }
-	
-	
+
+    IEnumerator MostraDica()
+    {
+        yield return new WaitForSecondsRealtime(120);
+        
+        mostrar = false;
+        plaquinhaDica.SetActive(true);
+    }
 }
