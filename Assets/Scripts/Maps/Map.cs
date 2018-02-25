@@ -27,8 +27,10 @@ public class Map : MonoBehaviour {
 		distanceToCenterX = -(player.position.x-XCenter)/(Mathf.Abs(pos1.position.x - pos0.position.x)/2);
 
 		playerMarker.localPosition = new Vector3 (map.sizeDelta.x * distanceToCenterX/2, map.sizeDelta.y * distanceToCenterY/2,0);
-        //playerMarker.rotation = Quaternion.Euler(0, 0, 0);
-        //playerMarker.rotation = Quaternion.Euler (0, 0, 180 - player.rotation.eulerAngles.y);
+        //270
+        //playerMarker.rotation = Quaternion.Euler (0, 0, 270 - player.rotation.eulerAngles.y);
+        //Quaternion NewRotation = new Quaternion(1, 0, 2, 0);
+        //playerMarker.rotation = NewRotation;
     }
 
 	public void GenerateMarkers(){

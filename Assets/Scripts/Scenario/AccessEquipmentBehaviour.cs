@@ -26,6 +26,7 @@ public class AccessEquipmentBehaviour : InteractObjectBase {
     public Button map;
     public Button exit;
     public Canvas dicaLocomotionCanvas;
+    public Image setinha;
     //private MostrarDica mostrarDica;
 
 
@@ -37,6 +38,7 @@ public class AccessEquipmentBehaviour : InteractObjectBase {
 			setCanvasAlphaForce(0f);
 		}
 		fadedOut = true;
+        setinha.gameObject.SetActive(false);
       //  mostrarDica = GetComponent<MostrarDica>();
 
     }
@@ -106,6 +108,7 @@ public class AccessEquipmentBehaviour : InteractObjectBase {
         exit.GetComponent<CanvasGroup>().alpha = 0f;
         dicaLocomotionCanvas.GetComponent<CanvasGroup>().alpha = 0f;
         dicaLocomotionCanvas.enabled = false;
+        setinha.gameObject.SetActive(true);
         //mostrarDica.ChamarMostrarDica();
     }
 

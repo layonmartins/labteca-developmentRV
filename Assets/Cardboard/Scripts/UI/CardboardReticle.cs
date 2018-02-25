@@ -114,7 +114,7 @@ public class CardboardReticle : MonoBehaviour, ICardboardPointer {
   public void OnGazeStay(Camera camera, GameObject targetObject, Vector3 intersectionPosition) {
     SetGazeTarget(intersectionPosition);
         if(gazedAt != null && gazeStartTime > 0f)
-        if(Time.time - gazeStartTime > 2.0f && ExecuteEvents.CanHandleEvent<TimedInputHandler>(gazedAt))
+        if(Time.time - gazeStartTime > 1.0f && ExecuteEvents.CanHandleEvent<TimedInputHandler>(gazedAt))
         {
             gazeStartTime = -1f;
             ExecuteEvents.Execute(gazedAt, null, (TimedInputHandler handler, BaseEventData data) => handler.HandleTimedInput());

@@ -6,7 +6,7 @@ using UnityEngine.UI;
 public class timerTwo : MonoBehaviour
 {
     Image fillImg;
-    float timeAmt = 2;
+    float timeAmt = 1;
     float time;
     public bool start = false;
     public bool restart = false;
