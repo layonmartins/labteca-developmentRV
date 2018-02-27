@@ -27,6 +27,7 @@ public class TimedInputLocomotion : MonoBehaviour, TimedInputHandler, TimedInput
         
         headlookwalk.isWalking = true;
         canvasgroup.alpha = 0.8f;
+        headlookwalk.StartAcelera();
     }
 
     public void HandleTimedInputExit()
