@@ -28,6 +28,7 @@ public class AccessEquipmentBehaviour : InteractObjectBase {
     public Canvas dicaLocomotionCanvas;
     public Image setinha;
     //private MostrarDica mostrarDica;
+    public bool Interacting;
 
 
 
@@ -110,6 +111,7 @@ public class AccessEquipmentBehaviour : InteractObjectBase {
         dicaLocomotionCanvas.enabled = false;
         setinha.gameObject.SetActive(true);
         //mostrarDica.ChamarMostrarDica();
+        Interacting = true;
     }
 
 	/*public void fadeIn(){

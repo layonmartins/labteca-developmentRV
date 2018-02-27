@@ -27,7 +27,7 @@ public class HUDController : MonoBehaviour {
     public GameObject StatusButtonInventory;
 
     public RectTransform hover;
-
+    public Text txtIntegarir;
 
     //para inverter o estado do alpha do group canvas
     void changeAlphaGroupCanvas(GameObject button, bool b)
@@ -146,7 +146,8 @@ public class HUDController : MonoBehaviour {
 	public void CallInventoryTrigger(){
 		if (!lockKey)
 			CallInventory(!inventoryUp);
-	}
+        txtIntegarir.enabled = false;
+    }
 	/// <summary>
 	/// Calls the inventory.
 	/// </summary>
